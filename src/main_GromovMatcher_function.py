@@ -2,13 +2,14 @@ import numpy as np
 import os
 import math
 import torch
+import pandas as pd
 
 from sklearn import metrics
 import scipy.interpolate as si
 import matplotlib.pyplot as plt
 
-from filtering import *
-from ugw_sinkhorn_solver import UGWSinkhornSolver
+from src.filtering import *
+from src.ugw_sinkhorn_solver import UGWSinkhornSolver
 
 def max_fun(couple):
     match = np.zeros(np.shape(couple))
@@ -327,7 +328,7 @@ def GM(Data1, Data2, D1 = None, D2 = None, w = 'm/z', mgap = 0.01,
     
     if np.any(np.isnan(coupling)):
             raise Exception(
-                f"Solver got NaN plan with params (ent, rho) "
+                f"Solver got NaN plan with params (ent, rho)"
                 f" = {ent, rho}. Try increasing argument ent."
             )
     
